@@ -22,6 +22,8 @@ time, mark, audio, video {
 :root{
     --main-color: purple;
     --secondary-color: rgb(215, 43, 215);
+    --secondary-color-focus: rgb(147, 44, 147);
+    --primary-color: white;
     --alternate-color: black;
     --alternate-color-focus: rgb(0, 0, 0,.5);
     background-color: rgb(167, 88, 240);
@@ -29,6 +31,7 @@ time, mark, audio, video {
 }
 
 header{
+    margin-top: 20px;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -36,7 +39,7 @@ header{
 
 h1{
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: white;
+    color: var(--primary-color);
     display: block;
     font-weight: 600;
     font-size: calc(20px + 2vw);
@@ -48,10 +51,11 @@ h1{
     white-space: nowrap;
 }
 
-.addTaskButton, fieldset{
-    background-color: white;
+.addTaskButton, fieldset, .taskContainer{
+    background-color: var(--primary-color);
     color: var(--main-color);
-    border: solid 2px var(--main-color);;
+    border: solid 2px var(--main-color);
+    border-radius: 20px;
     box-shadow: 2px 2px 2px var(--main-color);;
 }
 
@@ -59,13 +63,13 @@ h1{
     padding: calc(10px + 1vw);
     font-weight: 600;
     font-size: calc(15px + 1vw);
-    border-radius: 20px;
     margin-right: 6vw;
     white-space: nowrap;
 }
 
-.addTaskButton:hover{
+.addTaskButton:hover, .taskContainer:hover{
     cursor: pointer;
+    color: var(--secondary-color);
     transform: translateY(-2px);
     box-shadow: 6px 6px 2px var(--secondary-color);
 }
@@ -86,7 +90,6 @@ fieldset{
     align-items: center;
     gap: 1rem;
     font-weight: 400;
-    border-radius: 20px;
     font-size: calc(20px + 1vw);
 }
 
@@ -195,15 +198,53 @@ textarea:focus{
     box-shadow: 0px 4px 5px var(--alternate-color-focus), 0px -4px 5px var(--alternate-color-focus)
 }
 
+.gridContainer{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+    margin: 5vh 10vw;
+}
+
+.taskContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: .5rem;
+    padding-top: 4vh;
+    position: relative;
+}
+
+.tackButton{
+    border-radius: 100%;
+    padding: 12px;
+    background-color: var(--secondary-color);
+    border: solid .5px black;
+    border-left: .3vw solid black;
+    border-bottom: .3vw solid black;
+    position: absolute;
+    top: -10%;
+    right: 40%;
+    box-shadow: -10px 10px 0px var(--secondary-color-focus),
+    -13px 13px 0px black;
+}
+
+.tackButton:hover{
+    padding: 13px;
+    cursor: pointer;
+    transform: translateY(-2px);
+}
+
 footer{
     display: block;
     text-align: center;
     margin: 20px;
-    background-color: white;
+    background-color: var(--primary-color);
     padding: 10px;
     margin-left: 40vw;
     width: 20%;
     border-radius: 20px;
+    position: absolute;
+    bottom: 0;
 }
 
 @media (min-width: 500px) {
