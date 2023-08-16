@@ -24,6 +24,7 @@ time, mark, audio, video {
     --secondary-color: rgb(215, 43, 215);
     --alternate-color: black;
     --alternate-color-focus: rgb(0, 0, 0,.5);
+    background-color: rgb(167, 88, 240);
     font-family: 'Edu SA Beginner',system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
@@ -34,12 +35,13 @@ header{
 }
 
 h1{
-    color: var(--secondary-color);
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
     display: block;
     font-weight: 600;
     font-size: calc(25px + 2.5vw);
     text-align: center;
-    text-shadow: 2px 2px 2px var(--alternate-color);
+    text-shadow: 2px 2px 6px var(--alternate-color);
     padding: 1rem;
     margin-left: 15vw;
     width: 80vw;
