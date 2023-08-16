@@ -39,7 +39,7 @@ h1{
     color: white;
     display: block;
     font-weight: 600;
-    font-size: calc(25px + 2.5vw);
+    font-size: calc(20px + 2vw);
     text-align: center;
     text-shadow: 2px 2px 6px var(--alternate-color);
     padding: 1rem;
