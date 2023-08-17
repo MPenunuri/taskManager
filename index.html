@@ -10,6 +10,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Edu+SA+Beginner&family=Gochi+Hand&family=Montserrat:wght@600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Edu+SA+Beginner:wght@400;600&family=Gochi+Hand&family=Montserrat:wght@600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Montserrat:wght@600&display=swap" rel="stylesheet">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="script.js"></script>
 </head>
 <body>
@@ -81,24 +83,130 @@
                 <label for="">Notes</label>
                 <textarea id="notes" name="notes" placeholder="Do you have any notes?" cols="30" rows="10"></textarea>
             </section>
+            <section class="inputContainer">
+                <label for="subtasks">Do you want to add any subtask?</label>
+                <select name="subtasks" id="subtasks">
+                    <option value="empty-selection">-</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </section>
+            <section class="subtasksInputContainer">
+                <div class="subtasksLabels">
+                    <label for="subtaskName" class="subtaskNameLabel">Name</label>
+                    <label for="subtaskStatus" class="subtaskStatusLabel">Status</label>
+                </div>
+                <div class="subtaskInputs">
+                    <input type="text" id="subtaskName" name="subtaskName" 
+                    placeholder="Type a subtask">
+                    <select name="subtaskStatus" id="subtaskStatus">
+                        <option value="empty-selection">-</option>
+                        <option value="yes">Done</option>
+                        <option value="no">Undone</option>
+                    </select>
+                </div>
+
+                <div class="subtaskInputs">
+                    <input type="text" id="subtaskName" name="subtaskName" 
+                    placeholder="Type a subtask">
+                    <select name="subtaskStatus" id="subtaskStatus">
+                        <option value="empty-selection">-</option>
+                        <option value="yes">Done</option>
+                        <option value="no">Undone</option>
+                    </select>
+                </div>
+
+                <div class="subtaskInputs">
+                    <input type="text" id="subtaskName" name="subtaskName" 
+                    placeholder="Type a subtask">
+                    <select name="subtaskStatus" id="subtaskStatus">
+                        <option value="empty-selection">-</option>
+                        <option value="yes">Done</option>
+                        <option value="no">Undone</option>
+                    </select>
+                </div>
+                <div class="addSubtaskButtonContainer">
+                    <button type="button" class="addSubtaskButton">+</button>
+                </div>
+            </section>
         </fieldset>
+        <div class="formButtonsContainer">
+            <button type="button">Save</button>
+            <button type="button">Cancel</button>
+        </div>
     </form> -->
     <div class="gridContainer">
         <div class="taskContainer" id="taskContainerNum1">
             <button type="button" class="tackButton"></button>
-            <section class="nameSection">Task name</section>
-            <section class="descriptionSection">
-                <p class="nameLabel">Name</p>
+            <section class="nameSection">
+                <p class="nameLabel">Name:</p>
                 <p class="name">Do the laundry</p>
             </section>
-            <section class="categoriesSection">Task categorie</section>
-            <section class="startDateSection">12/12/2012</section>
-            <section class="conclusionDateSection">12/12/2012</section>
-            <section class="statusSection">In process</section>
-            <section class="notesSection">Has notes</section>
-            <section class="subtasksSection">Number of subtasks</section>
+            <section class="categoriesSection">
+                <p class="categorieLabel">Categorie:</p>
+                <p class="categorie">Family and home</p>
+            </section>
+            <section class="startDateSection">
+                <p class="startDateLabel">Start date:</p>
+                <p class="start-date">12/12/2023</p>
+            </section>
+            <section class="conclusionDateSection">
+                <p class="conclusion-dateLabel">Conclusion date:</p>
+                <p class="conclusion-date">23/12/2023</p>
+            </section>
+            <section class="statusSection">
+                <p class="statusLabel">Status:</p>
+                <p class="status">Not started</p>
+            </section>
+            <button type="button" class="detailsButton">Details</button>
         </div>
     </div>
+    <!-- <div class="taskDetailsContainer">
+        <h2>This is your task!</h2>
+        <section class="taskAttributeContainer">
+            <p class="attributeLabel">Name:</p>
+            <p class="attributeValue">Do the laundry</p>
+        </section>
+        <section class="taskAttributeContainer">
+            <p class="taskDescriptionLabel">Description:</p>
+            <p class="taskDescription">Go to the laundry and get clean all the clothes.</p>
+        </section>
+        <section class="taskAttributeContainer">
+            <p class="attributeLabel">Categorie:</p>
+            <p class="attributeValue">Family and Home</p>
+        </section>
+        <section class="taskAttributeContainer">
+            <p class="attributeLabel">Start date:</p>
+            <p class="attributeValue">27/09/2023</p>
+        </section>
+        <section class="taskAttributeContainer">
+            <p class="attributeLabel">Conclusion date:</p>
+            <p class="attributeValue">30/09/2023</p>
+        </section>
+        <section class="taskAttributeContainer">
+            <p class="attributeLabel">Status:</p>
+            <p class="attributeValue">Not started</p>
+        </section>
+        <section class="taskAttributeContainer">
+            <p class="attributeLabel">Notes:</p>      
+            <p class="attributeValue">Remember to separate the white clothes from the rest of the laundry.</p>
+        </section>
+        <section class="taskAttributeContainer">
+            <p class="attributeLabel">Subtasks:</p>
+            <div class="subtaskContainer"> 
+                <p class="subtaskName">Subtask 1</p>
+                <ion-icon name="checkbox"></ion-icon>
+            </div>
+            <div class="subtaskContainer">
+                <p class="subtaskName">Subtask 2</p>
+                <ion-icon name="checkbox"></ion-icon>
+            </div>
+            <div class="subtaskContainer">
+                <p class="subtaskName">Subtask 3</p>
+                <ion-icon name="square-outline"></ion-icon>
+            </div>
+        </section>
+    </div> -->
     <footer>Front-end project by MPenunuri.</footer>
 </body>
 </html>
