@@ -12,129 +12,119 @@
     <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Montserrat:wght@600&display=swap" rel="stylesheet">
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <script src="script.js"></script>
+    <script defer src="script.js"></script>
 </head>
 <body>
     <header>
         <h1>Task manager</h1>
         <section class="buttonContainer">
-            <button class="addTaskButton" type="button">Add task</button>
+            <button class="addTaskButton" id="addTaskButton" type="button">Add task</button>
         </section>
     </header>
-    <!-- <form action="">
-        <fieldset>
-            <legend>Add a new task!</legend>
-            <section class="inputContainer">
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name" placeholder="Type a name">
-            </section>
-            <section class="inputContainer">
-                <label for="description">Description</label>
-                <textarea id="description" name="description" 
-                placeholder="Type a description" cols="30" rows="10"></textarea>
-            </section>
-            <section class="inputContainer">
-                <label for="categorie">Categorie</label>
-                <select name="categorie" id="categorie">
-                    <option value="work">Work</option>
-                    <option value="health">Health</option>
-                    <option value="education">Education</option>
-                    <option value="family">Family and Home</option>
-                    <option value="finance">Finances</option>
-                    <option value="recreation">Leisure and Recreation</option>
-                    <option value="social">Social</option>
-                    <option value="personal-projects">Personal Projects</option>
-                    <option value="technology">Technology</option>
-                    <option value="food">Food</option>
-                    <option value="exercise">Exercise</option>
-                    <option value="spirituality">Spirituality</option>
-                    <option value="learning">Learning</option>
-                    <option value="art-creativity">Art and Creativity</option>
-                    <option value="travel">Travel</option>
-                    <option value="maintenance">Maintenance</option>
-                    <option value="short-term-goals">Short-Term Goals</option>
-                    <option value="other">Other</option>
-                </select>
-            </section>
-            <section class="inputContainer">
-                <label for="start-date">Start date</label>
-                <input type="date" id="start-date" name="start-date">
-            </section>
-            <section class="inputContainer">
-                <label for="conclusion-date">Conclusion date</label>
-                <input type="date" id="conclusion-date" name="conclusion-date">
-            </section>
-            <section class="inputContainer">
-                <label for="status">Status</label>
-                <div class="statusCategorieContainer">
-                    <input type="radio" id="not-started" name="not-started" value="not-started" checked/>
-                    <label for="not-started">Not started</label>
-                </div>
-                <div class="statusCategorieContainer">
-                    <input type="radio" id="not-started" name="not-started" value="not-started"/>
-                    <label for="not-started">In progress</label>
-                </div>
-                <div class="statusCategorieContainer">
-                    <input type="radio" id="not-started" name="not-started" value="not-started"/>
-                    <label for="not-started">Completed</label>
-                </div>
-            </section>
-            <section class="inputContainer">
-                <label for="">Notes</label>
-                <textarea id="notes" name="notes" placeholder="Do you have any notes?" cols="30" rows="10"></textarea>
-            </section>
-            <section class="inputContainer">
-                <label for="subtasks">Do you want to add any subtask?</label>
-                <select name="subtasks" id="subtasks">
-                    <option value="empty-selection">-</option>
-                    <option value="yes">Yes</option>
-                    <option value="no">No</option>
-                </select>
-            </section>
-            <section class="subtasksInputContainer">
-                <div class="subtasksLabels">
-                    <label for="subtaskName" class="subtaskNameLabel">Name</label>
-                    <label for="subtaskStatus" class="subtaskStatusLabel">Status</label>
-                </div>
-                <div class="subtaskInputs">
-                    <input type="text" id="subtaskName" name="subtaskName" 
-                    placeholder="Type a subtask">
-                    <select name="subtaskStatus" id="subtaskStatus">
-                        <option value="empty-selection">-</option>
-                        <option value="yes">Done</option>
-                        <option value="no">Undone</option>
+    <section class="formContainer" id="formContainer">
+        <form action="" id="form">
+            <fieldset>
+                <legend>Add a new task!</legend>
+                <section class="inputContainer">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" 
+                    placeholder="Type a name" autocomplete="off">
+                </section>
+                <section class="inputContainer">
+                    <label for="description">Description</label>
+                    <textarea id="description" name="description" 
+                    placeholder="Type a description" cols="30" rows="10"></textarea>
+                </section>
+                <section class="inputContainer">
+                    <label for="categorie">Categorie</label>
+                    <select name="categorie" id="categorie">
+                        <option value="work">Work</option>
+                        <option value="health">Health</option>
+                        <option value="education">Education</option>
+                        <option value="family-and-home">Family and Home</option>
+                        <option value="finance">Finances</option>
+                        <option value="leisure-and-recreation">Leisure and Recreation</option>
+                        <option value="social">Social</option>
+                        <option value="personal-projects">Personal Projects</option>
+                        <option value="technology">Technology</option>
+                        <option value="food">Food</option>
+                        <option value="exercise">Exercise</option>
+                        <option value="spirituality">Spirituality</option>
+                        <option value="learning">Learning</option>
+                        <option value="art-and-creativity">Art and Creativity</option>
+                        <option value="travel">Travel</option>
+                        <option value="maintenance">Maintenance</option>
+                        <option value="short-term-goals">Short-Term Goals</option>
+                        <option value="other">Other</option>
                     </select>
-                </div>
-
-                <div class="subtaskInputs">
-                    <input type="text" id="subtaskName" name="subtaskName" 
-                    placeholder="Type a subtask">
-                    <select name="subtaskStatus" id="subtaskStatus">
+                </section>
+                <section class="inputContainer">
+                    <label for="startDate">Start date</label>
+                    <input type="date" id="startDate" name="start-date">
+                </section>
+                <section class="inputContainer">
+                    <label for="conclusionDate">Conclusion date</label>
+                    <input type="date" id="conclusionDate" name="conclusion-date">
+                </section>
+                <section class="inputContainer">
+                    <label>Status</label>
+                    <div class="statusCategorieContainer">
+                        <input type="radio" id="not-started" name="status" value="not-started" checked/>
+                        <label for="not-started">Not started</label>
+                    </div>
+                    <div class="statusCategorieContainer">
+                        <input type="radio" id="in-progress" name="status" value="in-progress"/>
+                        <label for="in-progress">In progress</label>
+                    </div>
+                    <div class="statusCategorieContainer">
+                        <input type="radio" id="completed" name="status" value="completed"/>
+                        <label for="completed">Completed</label>
+                    </div>
+                </section>
+                <section class="inputContainer">
+                    <label for="notes">Notes</label>
+                    <textarea id="notes" name="notes" placeholder="Do you have any notes?" cols="30" rows="10"></textarea>
+                </section>
+                <section class="inputContainer">
+                    <label for="subtasks">Do you want to add any subtask?</label>
+                    <select name="subtasks" id="subtasks">
                         <option value="empty-selection">-</option>
-                        <option value="yes">Done</option>
-                        <option value="no">Undone</option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
                     </select>
+                </section>
+                <section class="subtasksInputsContainer" id="subtasksInputsContainer">
+                    <div class="subtaskInputContainer" id="subtaskInputContainer1">
+                        <div class="subtaskLabels">
+                            <label for="subtaskName1" class="subtaskNameLabel">Subtask Num. 1</label>
+                            <label for="subtaskStatus1" class="subtaskStatusLabel">Status</label>
+                        </div>
+                        <div class="subtaskInputs" id="subtaskInputs1">
+                            <input type="text" id="subtaskName1" name="subtaskName1" 
+                            placeholder="Type a subtask">
+                            <select name="subtaskStatus1" id="subtaskStatus1">
+                                <option value="empty-selection">-</option>
+                                <option value="done">Done</option>
+                                <option value="undone">Undone</option>
+                            </select>
+                        </div>
+                    </div>
+                </section>
+                <div class="addSubtaskButtonContainer" id="addSubtaskButtonContainer">
+                    <button type="button" 
+                    class="addSubtaskButton"
+                    id="addSubtaskButton">+</button>
+                    <button type="button" 
+                    class="subtractSubtaskButton"
+                    id="subtractSubtaskButton">-</button>
                 </div>
-
-                <div class="subtaskInputs">
-                    <input type="text" id="subtaskName" name="subtaskName" 
-                    placeholder="Type a subtask">
-                    <select name="subtaskStatus" id="subtaskStatus">
-                        <option value="empty-selection">-</option>
-                        <option value="yes">Done</option>
-                        <option value="no">Undone</option>
-                    </select>
-                </div>
-                <div class="addSubtaskButtonContainer">
-                    <button type="button" class="addSubtaskButton">+</button>
-                </div>
-            </section>
-        </fieldset>
-        <div class="formButtonsContainer">
-            <button type="button">Save</button>
-            <button type="button">Cancel</button>
-        </div>
-    </form> -->
+            </fieldset>
+            <div class="formButtonsContainer">
+                <button type="button" id="saveButton">Save</button>
+                <button type="button" id="cancelButton">Cancel</button>
+            </div>
+        </form>
+    </section>
     <div class="gridContainer">
         <div class="taskContainer" id="taskContainerNum1">
             <button type="button" class="tackButton"></button>
@@ -161,7 +151,7 @@
             <button type="button" class="detailsButton">Details</button>
         </div>
     </div>
-    <!-- <div class="taskDetailsContainer">
+    <div class="taskDetailsContainer">
         <h2>This is your task!</h2>
         <section class="taskAttributeContainer">
             <p class="attributeLabel">Name:</p>
@@ -206,7 +196,10 @@
                 <ion-icon name="square-outline"></ion-icon>
             </div>
         </section>
-    </div> -->
+        <div class="editButtonContainer">
+            <button type="button" class="editButton">Edit</button>
+        </div>
+    </div>
     <footer>Front-end project by MPenunuri.</footer>
 </body>
 </html>

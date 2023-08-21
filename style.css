@@ -35,6 +35,7 @@ header{
     display: flex;
     justify-content: space-around;
     align-items: center;
+    
 }
 
 h1{
@@ -52,7 +53,8 @@ h1{
 }
 
 .addTaskButton, fieldset, .taskContainer, .taskDetailsContainer, 
-.formButtonsContainer > button, .addSubtaskButton, .detailsButton{
+.formButtonsContainer > button, .addSubtaskButton, .subtractSubtaskButton,
+.detailsButton,.editButton{
     background-color: var(--primary-color);
     color: var(--main-color);
     border: solid 2px var(--main-color);
@@ -60,8 +62,8 @@ h1{
     box-shadow: 6px 6px 10px var(--main-color);;
 }
 
-.addTaskButton, .formButtonsContainer > button, .addSubtaskButton, 
-.detailsButton{
+.addTaskButton, .formButtonsContainer > button, .addSubtaskButton, .subtractSubtaskButton,
+.detailsButton, .editButton{
     padding: calc(10px + 1vw);
     font-weight: 600;
     font-size: calc(15px + 1vw);
@@ -70,22 +72,33 @@ h1{
 }
 
 .addTaskButton:hover, .taskContainer:hover, 
-.formButtonsContainer > button:hover, .addSubtaskButton:hover, 
-.detailsButton:hover{
+.formButtonsContainer > button:hover, .addSubtaskButton:hover, .subtractSubtaskButton:hover,
+.detailsButton:hover, .editButton:hover{
     cursor: pointer;
     color: var(--secondary-color);
     transform: translateY(-2px);
     box-shadow: 6px 6px 10px var(--secondary-color);
 }
 
-form{
+.formContainer{
+    display: block;
+    width: 100vw;
+    height: 00vh;
     display: flex;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+}
+
+form{
+    display: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 20px;
-    margin-bottom: 20vh;
+    margin: 5vh 5vw;
     gap: 2rem;
+    position: absolute;
+    z-index: 2;
 }
 
 .formButtonsContainer{
@@ -93,6 +106,7 @@ form{
     gap: 2rem;
     justify-content: center;
     padding-left: 10vw;
+    margin-bottom: 10vh;
 }
 
 fieldset{
@@ -213,16 +227,16 @@ textarea:focus{
     box-shadow: 0px 4px 5px var(--alternate-color-focus), 0px -4px 5px var(--alternate-color-focus)
 }
 
-.subtasksInputContainer{
+.subtasksInputsContainer{
     width: 100%;
-    display: grid;
+    display: none;
     grid-template-columns: 1fr;
     grid-template-rows: auto;
     gap: 1rem;
     margin-bottom: 4vh;
 }
 
-.subtasksLabels, .subtaskInputs{
+.subtaskLabels, .subtaskInputs{
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -244,19 +258,20 @@ textarea:focus{
 }
 
 .subtaskInputs > select{
-    height: 100%;
+    padding: 2vh;
     margin: 0;
 }
 
 .addSubtaskButtonContainer{
-    display: flex;
+    display: none;
     justify-content: center;
+    margin-bottom: 2vh;
+    gap: 1rem;
 }
 
-.addSubtaskButton{
+.addSubtaskButton, .subtractSubtaskButton{
     padding: 1rem 2rem;
-    margin-left: 8vw;
-
+    margin: 0vh 4vw;
 }
 
 .gridContainer{
@@ -316,7 +331,7 @@ textarea:focus{
 }
 
 .taskDetailsContainer{
-    display: flex;
+    display: none;
     flex-direction: column;
     align-items: center;
     gap: 1rem;
@@ -332,6 +347,7 @@ h2{
     font-weight: 600;
     color: var(--alternate-color);
     text-decoration: underline;
+    white-space: nowrap;
 }
 
 .taskAttributeContainer{
@@ -351,7 +367,7 @@ h2{
     gap: 1rem;
     align-items: center;
     justify-content: center;
-    width: 100%;
+    width: 40vw;
     color: var(--alternate-color);
     border-radius: 20px;
     border: solid 2px var(--main-color);
@@ -361,6 +377,10 @@ h2{
 
 .subtaskContainer > ion-icon{
     color: var(--main-color);
+}
+
+.editButton{
+    margin-left: 10vw;
 }
 
 
@@ -382,11 +402,19 @@ footer{
     fieldset, .taskDetailsContaine{
         width: 70vw;
     }
+
+    form{
+        margin: 5vh 16vw;
+    }
 }
 
 @media (min-width: 780px) {
     fieldset, .taskDetailsContaine{
         width: 50vw;
+    }
+
+    form{
+        margin: 5vh 25vw;
     }
 }
 
