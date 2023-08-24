@@ -1,3 +1,135 @@
+const tasks = [
+    {
+     "name": "Finish project report",
+     "description": "Write and format the final project report.",
+     "categorie": "Work",
+     "startDate": "2023-08-25",
+     "conclusionDate": "2023-09-02",
+     "status": "in-progress",
+     "notes": "Remember to include the financial projections.",
+     "subtasks": [
+       { "name": "Research data", "status": "done" },
+       { "name": "Review conclusions", "status": "undone" }
+     ]
+   },
+   {
+     "name": "Gym workout",
+     "description": "Hit the gym and do a full-body workout.",
+     "categorie": "Health",
+     "startDate": "2023-08-26",
+     "conclusionDate": "2023-08-26",
+     "status": "not-started",
+     "notes": "",
+     "subtasks": []
+   },
+   {
+     "name": "Study for exam",
+     "description": "Review lecture notes and practice problems.",
+     "categorie": "Education",
+     "startDate": "2023-08-28",
+     "conclusionDate": "2023-09-05",
+     "status": "not-started",
+     "notes": "Focus on chapters 5-10.",
+     "subtasks": [
+       { "name": "Read chapter 5", "status": "undone" },
+       { "name": "Solve practice problems", "status": "undone" }
+     ]
+   },
+   {
+     "name": "Family picnic",
+     "description": "Organize a picnic at the local park.",
+     "categorie": "Family and Home",
+     "startDate": "2023-08-30",
+     "conclusionDate": "2023-08-30",
+     "status": "completed",
+     "notes": "Bring snacks and games.",
+     "subtasks": []
+   },
+   {
+     "name": "Budget planning",
+     "description": "Review monthly expenses and create a budget.",
+     "categorie": "Finances",
+     "startDate": "2023-09-01",
+     "conclusionDate": "2023-09-03",
+     "status": "not-started",
+     "notes": "Allocate more funds for savings.",
+     "subtasks": [
+       { "name": "Gather bills and receipts", "status": "done" },
+       { "name": "Categorize expenses", "status": "undone" }
+     ]
+   },
+   {
+     "name": "Painting project",
+     "description": "Start painting the living room walls.",
+     "categorie": "Home Improvement",
+     "startDate": "2023-09-02",
+     "conclusionDate": "2023-09-10",
+     "status": "in-progress",
+     "notes": "Buy paint and brushes.",
+     "subtasks": [
+       { "name": "Choose paint colors", "status": "done" },
+       { "name": "Move furniture", "status": "undone" }
+     ]
+   },
+   {
+     "name": "Read a new book",
+     "description": "Pick a novel and enjoy some reading time.",
+     "categorie": "Leisure and Recreation",
+     "startDate": "2023-09-05",
+     "conclusionDate": "2023-09-15",
+     "status": "not-started",
+     "notes": "Visit the bookstore.",
+     "subtasks": []
+   },
+   {
+     "name": "Meet friends",
+     "description": "Hang out with friends at the cafe.",
+     "categorie": "Social",
+     "startDate": "2023-09-07",
+     "conclusionDate": "2023-09-07",
+     "status": "completed",
+     "notes": "Catch up on recent events.",
+     "subtasks": []
+   },
+   {
+     "name": "Personal website update",
+     "description": "Add new projects and blog posts to the website.",
+     "categorie": "Personal Projects",
+     "startDate": "2023-09-10",
+     "conclusionDate": "2023-09-20",
+     "status": "not-started",
+     "notes": "Prepare high-quality images.",
+     "subtasks": [
+       { "name": "Write new blog post", "status": "undone" },
+       { "name": "Update portfolio page", "status": "undone" }
+     ]
+   },
+   {
+     "name": "Learn a new language",
+     "description": "Start learning the basics of Spanish.",
+     "categorie": "Learning",
+     "startDate": "2023-09-15",
+     "conclusionDate": "2023-10-15",
+     "status": "in-progress",
+     "notes": "Use online language learning platforms.",
+     "subtasks": [
+       { "name": "Practice greetings", "status": "done" },
+       { "name": "Learn common phrases", "status": "undone" }
+     ]
+   },
+   {
+     "name": "Create digital artwork",
+     "description": "Use graphic design software to create a new piece of art.",
+     "categorie": "Art and Creativity",
+     "startDate": "2023-09-20",
+     "conclusionDate": "2023-09-25",
+     "status": "not-started",
+     "notes": "Experiment with color palettes.",
+     "subtasks": []
+   }
+];
+
+
 const addTaskButton = document.getElementById("addTaskButton");
 const formContainer = document.getElementById('formContainer');
 const form = document.getElementById('form');
@@ -11,11 +143,13 @@ addTaskButton.addEventListener('click', () =>{
 
 const cancelButton =document.getElementById('cancelButton');
 
-cancelButton.addEventListener('click', () =>{
+function hideForm(){
     rootElement.style.backgroundColor = 'rgb(167, 88, 240)';
     formContainer.style.height = '0vh'
     form.style.display = 'none';
-});
+}
+
+cancelButton.addEventListener('click', () =>{hideForm()});
 
 class Task {
     constructor(name, description, categorie, 
@@ -129,19 +263,14 @@ const addSubtaskButton = document.getElementById('addSubtaskButton');
 
 addSubtaskButton.addEventListener('click', () => {addSubtask()});
 
-function removeHTMLelement(id){
-    let elementToRemove = document.getElementById(id);
-    elementToRemove.remove();
-}
-
 function subtractSubtasksInputs(){
     let childs = subtasksInputsContainer.children;
     let arrayOfChilds = [...childs];
     arrayOfChilds.forEach(child => {
         let index = arrayOfChilds.indexOf(child);
-        if(index === arrayOfChilds.length-1 && index != 0){
+        if(index != 0){
             child.remove()
-        } else if(index === 0 && arrayOfChilds.length === 1){
+        } else if(arrayOfChilds.length === 1){
             subtasksQuestion.value = 'no';
             subtasksInputsContainer.style.display = 'none';
             addSubtaskButtonContainer.style.display = 'none';
@@ -157,7 +286,7 @@ subtractSubButton.addEventListener('click',() => {
 
 const emptyTask = new Task();
 const taskAttributes = Object.keys(emptyTask);
-const tasks = [];
+
 const saveButton = document.getElementById('saveButton');
 
 function getInputValue(str){return document.getElementById(str).value};
@@ -167,7 +296,7 @@ function getSelectedRadioValue(){
     for (let radio of radios) {if (radio.checked)return radio.value};
 }
 
-saveButton.addEventListener('click', () =>{
+function saveData(){
     let tasksValues = [];
     taskAttributes.forEach(attribute =>{
         if(attribute != 'status'){
@@ -176,5 +305,34 @@ saveButton.addEventListener('click', () =>{
             tasksValues.push(getSelectedRadioValue());
         }
     });
-    console.log(tasksValues)
+    let newTask = new Task(
+        tasksValues[0],
+        tasksValues[1],
+        tasksValues[2],
+        tasksValues[3],
+        tasksValues[4],
+        tasksValues[5],
+        tasksValues[6],
+        tasksValues[7]
+    )
+    tasks.push(newTask);
+    form.reset();
+    hideForm();
+}
+
+function evalData(){
+    if(getInputValue('name') === ''){
+        alert('Please type a name.');
+    } else if(getInputValue('name') != ''){
+        return true;
+    }
+}
+
+// PENDIENTE CONFIGURAR FUNCIÓN PARA QUE TOME LOS VALORES DE LAS SUBTAREAS
+//ASÍ MISMO ES NECESARIO CREAR EN EL CODIGO UNA NUEVA CLASE DENOMINADA SUBTASK
+//Y CONFIGURAR LO CORRESPONDIENTE EN LA CLASE TASK
+
+saveButton.addEventListener('click', () =>{
+    if(evalData() === true){saveData();}
+    console.log(tasks)
 });

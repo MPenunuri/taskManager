@@ -26,18 +26,19 @@
             <fieldset>
                 <legend>Add a new task!</legend>
                 <section class="inputContainer">
-                    <label for="name">Name</label>
+                    <label for="name">Name*</label>
                     <input type="text" id="name" name="name" 
                     placeholder="Type a name" autocomplete="off">
                 </section>
                 <section class="inputContainer">
                     <label for="description">Description</label>
                     <textarea id="description" name="description" 
-                    placeholder="Type a description" cols="30" rows="10"></textarea>
+                    placeholder="Type a description (If you want it.)" cols="30" rows="10"></textarea>
                 </section>
                 <section class="inputContainer">
                     <label for="categorie">Categorie</label>
                     <select name="categorie" id="categorie">
+                        <option value="not-selected">No selected</option>
                         <option value="work">Work</option>
                         <option value="health">Health</option>
                         <option value="education">Education</option>
