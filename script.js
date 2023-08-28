@@ -190,8 +190,12 @@ function appendSectionAndChildElements(parent,id,variable,label,obj){
 function deleteTask(htmlButton){
     htmlButton.addEventListener('click',() =>{
         let id = htmlButton.id.split('Num')[1];
-        tasks.splice(id,1);
-        displayTasks();
+        let taskContainerToDelete = document.getElementById(`taskContainerNum${id}`)
+        taskContainerToDelete.classList.add('removing');
+        setTimeout(() =>{
+          tasks.splice(id,1);
+          displayTasks();
+        }, 1000);
     });
 };
 
@@ -239,21 +243,35 @@ function appendSubtask(num,name,status){
 
 const rootElement = document.documentElement;
 const backgroundProtector = document.getElementById('backgroundProtector');
-
 let currentTask = null;
+
+function showDetails(){
+  taskDetailsContainer.style.display = 'flex';
+  setTimeout(() => {taskDetailsContainer.style.width = '90vw'}, 1);
+  rootElement.style.backgroundColor = 'var(--alternate-color-focus)';
+  rootElement.style.overflow = 'hidden';
+  backgroundProtector.style.display = 'block';
+}
 
 function getTaskDetails(htmlButton){
   htmlButton.addEventListener('click',() =>{
       let idButton = htmlButton.id;
       let id = idButton.split('Num')[1];
       currentTask = id;
-      taskDetailsContainer.style.display = 'flex';
-      rootElement.style.backgroundColor = 'var(--alternate-color-focus)';
-      rootElement.style.overflow = 'hidden';
-      backgroundProtector.style.display = 'block';
+      showDetails();
       let attributeValues = taskDetailsContainer.querySelectorAll('p[class="attributeValue"]');
       attributeValues.forEach((attribute) => {
-        attribute.textContent = eval(`tasks[id].${findIdAttribute(attribute.id)[0]}`);
+        let attributeName = findIdAttribute(attribute.id)[0];
+        let data = eval(`tasks[id].${attributeName}`);
+        if(data != ''){
+          switch(attributeName){
+            case 'status':
+              attribute.textContent = presentChainText(data);
+              break
+            default:
+              attribute.textContent = data;
+          }
+        } else{attribute.textContent = `No ${attributeName}.`};
       });
       let subtasks = tasks[id].subtasks;
       let taskSubtasksHeader = document.getElementById('taskSubtasks');
@@ -324,7 +342,7 @@ editButton.addEventListener(('click'), ()=> {
   editTask();
   taskDetailsContainer.style.display = 'none';
   legend.textContent = "Let's edit this task!";
-  form.style.display = 'flex';
+  showForm();
 })
 
 function deleteSubtasksDetails(){
@@ -336,7 +354,8 @@ function deleteSubtasksDetails(){
 let closeDetailsButton = document.getElementById('closeDetailsButton');
 closeDetailsButton.addEventListener('click',() => {
   editActive = false;
-  taskDetailsContainer.style.display = 'none';
+  taskDetailsContainer.style.width = '0vw';
+  setTimeout(() => {taskDetailsContainer.style.display = 'none'},500)
   rootElement.style.backgroundColor = 'rgb(167, 88, 240)';
   rootElement.style.overflow = 'auto';
   backgroundProtector.style.display = 'none';
@@ -367,21 +386,28 @@ displayTasks();
 
 const addTaskButton = document.getElementById("addTaskButton");
 const form = document.getElementById('form');
+const fieldset = document.getElementById('fieldset');
 const legend = document.getElementById('legend');
+
+function showForm(){
+  rootElement.style.backgroundColor = 'var(--alternate-color-focus)';
+  rootElement.style.overflow = 'hidden';
+  backgroundProtector.style.display = 'block';
+  form.style.display = 'flex';
+  setTimeout(() => {fieldset.style.height = '80vh'}, 1);
+}
 
 addTaskButton.addEventListener('click', () =>{
     legend.textContent = 'Add a new task!';
-    rootElement.style.backgroundColor = 'var(--alternate-color-focus)';
-    rootElement.style.overflow = 'hidden';
-    backgroundProtector.style.display = 'block';
-    form.style.display = 'flex';
+    showForm();
 });
 
 const cancelButton =document.getElementById('cancelButton');
 
 function hideForm(){
     rootElement.style.backgroundColor = 'rgb(167, 88, 240)';
-    form.style.display = 'none';
+    fieldset.style.height = '0';
+    setTimeout(() => {form.style.display = 'none'}, 600);
     rootElement.style.overflow = 'auto';
     backgroundProtector.style.display = 'none';
 }
