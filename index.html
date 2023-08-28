@@ -21,186 +21,133 @@
             <button class="addTaskButton" id="addTaskButton" type="button">Add task</button>
         </section>
     </header>
-    <section class="formContainer" id="formContainer">
-        <form action="" id="form">
-            <fieldset>
-                <legend>Add a new task!</legend>
-                <section class="inputContainer">
-                    <label for="name">Name*</label>
-                    <input type="text" id="name" name="name" 
-                    placeholder="Type a name" autocomplete="off">
-                </section>
-                <section class="inputContainer">
-                    <label for="description">Description</label>
-                    <textarea id="description" name="description" 
-                    placeholder="Type a description (If you want it.)" cols="30" rows="10"></textarea>
-                </section>
-                <section class="inputContainer">
-                    <label for="categorie">Categorie</label>
-                    <select name="categorie" id="categorie">
-                        <option value="not-selected">No selected</option>
-                        <option value="work">Work</option>
-                        <option value="health">Health</option>
-                        <option value="education">Education</option>
-                        <option value="family-and-home">Family and Home</option>
-                        <option value="finance">Finances</option>
-                        <option value="leisure-and-recreation">Leisure and Recreation</option>
-                        <option value="social">Social</option>
-                        <option value="personal-projects">Personal Projects</option>
-                        <option value="technology">Technology</option>
-                        <option value="food">Food</option>
-                        <option value="exercise">Exercise</option>
-                        <option value="spirituality">Spirituality</option>
-                        <option value="learning">Learning</option>
-                        <option value="art-and-creativity">Art and Creativity</option>
-                        <option value="travel">Travel</option>
-                        <option value="maintenance">Maintenance</option>
-                        <option value="short-term-goals">Short-Term Goals</option>
-                        <option value="other">Other</option>
-                    </select>
-                </section>
-                <section class="inputContainer">
-                    <label for="startDate">Start date</label>
-                    <input type="date" id="startDate" name="start-date">
-                </section>
-                <section class="inputContainer">
-                    <label for="conclusionDate">Conclusion date</label>
-                    <input type="date" id="conclusionDate" name="conclusion-date">
-                </section>
-                <section class="inputContainer">
-                    <label>Status</label>
-                    <div class="statusCategorieContainer">
-                        <input type="radio" id="not-started" name="status" value="not-started" checked/>
-                        <label for="not-started">Not started</label>
-                    </div>
-                    <div class="statusCategorieContainer">
-                        <input type="radio" id="in-progress" name="status" value="in-progress"/>
-                        <label for="in-progress">In progress</label>
-                    </div>
-                    <div class="statusCategorieContainer">
-                        <input type="radio" id="completed" name="status" value="completed"/>
-                        <label for="completed">Completed</label>
-                    </div>
-                </section>
-                <section class="inputContainer">
-                    <label for="notes">Notes</label>
-                    <textarea id="notes" name="notes" placeholder="Do you have any notes?" cols="30" rows="10"></textarea>
-                </section>
-                <section class="inputContainer">
-                    <label for="subtasks">Do you want to add any subtask?</label>
-                    <select name="subtasks" id="subtasks">
-                        <option value="empty-selection">-</option>
-                        <option value="yes">Yes</option>
-                        <option value="no">No</option>
-                    </select>
-                </section>
-                <section class="subtasksInputsContainer" id="subtasksInputsContainer">
-                    <div class="subtaskInputContainer" id="subtaskInputContainer1">
-                        <div class="subtaskLabels">
-                            <label for="subtaskName1" class="subtaskNameLabel">Subtask Num. 1</label>
-                            <label for="subtaskStatus1" class="subtaskStatusLabel">Status</label>
-                        </div>
-                        <div class="subtaskInputs" id="subtaskInputs1">
-                            <input type="text" id="subtaskName1" name="subtaskName1" 
-                            placeholder="Type a subtask">
-                            <select name="subtaskStatus1" id="subtaskStatus1">
-                                <option value="empty-selection">-</option>
-                                <option value="done">Done</option>
-                                <option value="undone">Undone</option>
-                            </select>
-                        </div>
-                    </div>
-                </section>
-                <div class="addSubtaskButtonContainer" id="addSubtaskButtonContainer">
-                    <button type="button" 
-                    class="addSubtaskButton"
-                    id="addSubtaskButton">+</button>
-                    <button type="button" 
-                    class="subtractSubtaskButton"
-                    id="subtractSubtaskButton">-</button>
+    <form action="" id="form">
+        <fieldset>
+            <legend id="legend">Add a task!</legend>
+            <section class="inputContainer">
+                <label for="name">Name*</label>
+                <input type="text" id="name" name="name" 
+                placeholder="Type a name" autocomplete="no">
+            </section>
+            <section class="inputContainer">
+                <label for="description">Description</label>
+                <textarea id="description" name="description" 
+                placeholder="Type a description (If you want it.)" cols="30" rows="10"></textarea>
+            </section>
+            <section class="inputContainer">
+                <label for="categorie">Categorie</label>
+                <select name="categorie" id="categorie">
+                    <option value="No selected">No selected</option>
+                    <option value="Work">Work</option>
+                    <option value="Health">Health</option>
+                    <option value="Education">Education</option>
+                    <option value="Family and Home">Family and Home</option>
+                    <option value="Finances">Finances</option>
+                    <option value="Leisure and Recreation">Leisure and Recreation</option>
+                    <option value="Social">Social</option>
+                    <option value="Personal Projects">Personal Projects</option>
+                    <option value="Technology">Technology</option>
+                    <option value="Food">Food</option>
+                    <option value="Exercise">Exercise</option>
+                    <option value="Spirituality">Spirituality</option>
+                    <option value="Learning">Learning</option>
+                    <option value="Art and Creativity">Art and Creativity</option>
+                    <option value="Travel">Travel</option>
+                    <option value="Maintenance">Maintenance</option>
+                    <option value="Short-Term Goals">Short-Term Goals</option>
+                    <option value="Other">Other</option>
+                </select>
+            </section>
+            <section class="inputContainer">
+                <label for="startDate">Start date</label>
+                <input type="date" id="startDate" name="start-date">
+            </section>
+            <section class="inputContainer">
+                <label for="conclusionDate">Conclusion date</label>
+                <input type="date" id="conclusionDate" name="conclusion-date">
+            </section>
+            <section class="inputContainer">
+                <label>Status</label>
+                <div class="statusCategorieContainer">
+                    <input type="radio" id="not-started" name="status" value="not-started" checked/>
+                    <label for="not-started">Not started</label>
                 </div>
-            </fieldset>
+                <div class="statusCategorieContainer">
+                    <input type="radio" id="in-progress" name="status" value="in-progress"/>
+                    <label for="in-progress">In progress</label>
+                </div>
+                <div class="statusCategorieContainer">
+                    <input type="radio" id="completed" name="status" value="completed"/>
+                    <label for="completed">Completed</label>
+                </div>
+            </section>
+            <section class="inputContainer">
+                <label for="notes">Notes</label>
+                <textarea id="notes" name="notes" placeholder="Do you have any notes?" cols="30" rows="10"></textarea>
+            </section>
+            <section class="inputContainer">
+                <label for="subtasks">Do you want to add any subtask?</label>
+                <select name="subtasks" id="subtasks">
+                    <option value="no">No</option>
+                    <option value="yes">Yes</option>
+                </select>
+            </section>
+            <section class="subtasksInputsContainer" id="subtasksInputsContainer">
+            </section>
+            <div class="addSubtaskButtonContainer" id="addSubtaskButtonContainer">
+                <button type="button" 
+                class="addSubtaskButton"
+                id="addSubtaskButton">Add</button>
+                <button type="button" 
+                class="subtractSubtaskButton"
+                id="subtractSubtaskButton">Remove</button>
+            </div>
             <div class="formButtonsContainer">
                 <button type="button" id="saveButton">Save</button>
                 <button type="button" id="cancelButton">Cancel</button>
             </div>
-        </form>
-    </section>
-    <div class="gridContainer">
-        <div class="taskContainer" id="taskContainerNum1">
-            <button type="button" class="tackButton"></button>
-            <section class="nameSection">
-                <p class="nameLabel">Name:</p>
-                <p class="name">Do the laundry</p>
-            </section>
-            <section class="categoriesSection">
-                <p class="categorieLabel">Categorie:</p>
-                <p class="categorie">Family and home</p>
-            </section>
-            <section class="startDateSection">
-                <p class="startDateLabel">Start date:</p>
-                <p class="start-date">12/12/2023</p>
-            </section>
-            <section class="conclusionDateSection">
-                <p class="conclusion-dateLabel">Conclusion date:</p>
-                <p class="conclusion-date">23/12/2023</p>
-            </section>
-            <section class="statusSection">
-                <p class="statusLabel">Status:</p>
-                <p class="status">Not started</p>
-            </section>
-            <button type="button" class="detailsButton">Details</button>
-        </div>
-    </div>
-    <div class="taskDetailsContainer">
+        </fieldset>
+    </form>
+    <div class="gridContainer" id="gridContainer"></div>
+    <div class="taskDetailsContainer" id="taskDetailsContainer">
         <h2>This is your task!</h2>
         <section class="taskAttributeContainer">
             <p class="attributeLabel">Name:</p>
-            <p class="attributeValue">Do the laundry</p>
+            <p class="attributeValue" id="taskName">Clean clothes</p>
         </section>
         <section class="taskAttributeContainer">
-            <p class="taskDescriptionLabel">Description:</p>
-            <p class="taskDescription">Go to the laundry and get clean all the clothes.</p>
+            <p class="attributeLabel">Description:</p>
+            <p class="attributeValue" id="taskDescription">Go to the laundry and get clean all the clothes.</p>
         </section>
         <section class="taskAttributeContainer">
             <p class="attributeLabel">Categorie:</p>
-            <p class="attributeValue">Family and Home</p>
+            <p class="attributeValue" id="taskCategorie">Family and Home</p>
         </section>
         <section class="taskAttributeContainer">
             <p class="attributeLabel">Start date:</p>
-            <p class="attributeValue">27/09/2023</p>
+            <p class="attributeValue" id="taskStartDate">27/09/2023</p>
         </section>
         <section class="taskAttributeContainer">
             <p class="attributeLabel">Conclusion date:</p>
-            <p class="attributeValue">30/09/2023</p>
+            <p class="attributeValue" id="taskConclusionDate">30/09/2023</p>
         </section>
         <section class="taskAttributeContainer">
             <p class="attributeLabel">Status:</p>
-            <p class="attributeValue">Not started</p>
+            <p class="attributeValue" id="taskStatus">Not started</p>
         </section>
         <section class="taskAttributeContainer">
             <p class="attributeLabel">Notes:</p>      
-            <p class="attributeValue">Remember to separate the white clothes from the rest of the laundry.</p>
+            <p class="attributeValue" id="taskNotes">Remember to separate the white clothes from the rest of the laundry.</p>
         </section>
-        <section class="taskAttributeContainer">
-            <p class="attributeLabel">Subtasks:</p>
-            <div class="subtaskContainer"> 
-                <p class="subtaskName">Subtask 1</p>
-                <ion-icon name="checkbox"></ion-icon>
-            </div>
-            <div class="subtaskContainer">
-                <p class="subtaskName">Subtask 2</p>
-                <ion-icon name="checkbox"></ion-icon>
-            </div>
-            <div class="subtaskContainer">
-                <p class="subtaskName">Subtask 3</p>
-                <ion-icon name="square-outline"></ion-icon>
-            </div>
+        <section class="taskAttributeContainer" id="subtasksDetailsContainer">
+            <p class="attributeLabel" id="taskSubtasks">Subtasks:</p>
         </section>
         <div class="editButtonContainer">
-            <button type="button" class="editButton">Edit</button>
+            <button type="button" class="editButton" id="editButton">Edit</button>
+            <button type="button" class="closeButton" id="closeDetailsButton">Close</button>
         </div>
     </div>
+    <div id="backgroundProtector">&nbsp;</div>
     <footer>Front-end project by MPenunuri.</footer>
 </body>
 </html>

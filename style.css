@@ -23,11 +23,15 @@ time, mark, audio, video {
     --main-color: purple;
     --secondary-color: rgb(215, 43, 215);
     --secondary-color-focus: rgb(147, 44, 147);
-    --primary-color: rgb(255, 255, 255,.9);
+    --primary-color: rgb(255, 255, 255,.95);
     --alternate-color: black;
     --alternate-color-focus: rgb(0, 0, 0,.5);
     background-color: rgb(167, 88, 240);
     font-family: 'Edu SA Beginner',system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+html, body{
+    height: 100%;
 }
 
 header{
@@ -39,13 +43,12 @@ header{
 }
 
 h1{
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: var(--primary-color);
     display: block;
     font-weight: 600;
-    font-size: calc(20px + 2vw);
+    font-size: calc(30px + 2vw);
     text-align: center;
-    text-shadow: 6px 6px 10px var(--alternate-color);
+    text-shadow: 2px 2px 5px var(--alternate-color);
     padding: 1rem;
     margin-left: 8vw;
     width: 80vw;
@@ -54,7 +57,7 @@ h1{
 
 .addTaskButton, fieldset, .taskContainer, .taskDetailsContainer, 
 .formButtonsContainer > button, .addSubtaskButton, .subtractSubtaskButton,
-.detailsButton,.editButton{
+.detailsButton,.editButton, .closeButton{
     background-color: var(--primary-color);
     color: var(--main-color);
     border: solid 2px var(--main-color);
@@ -63,7 +66,7 @@ h1{
 }
 
 .addTaskButton, .formButtonsContainer > button, .addSubtaskButton, .subtractSubtaskButton,
-.detailsButton, .editButton{
+.detailsButton, .editButton, .closeButton{
     padding: calc(10px + 1vw);
     font-weight: 600;
     font-size: calc(15px + 1vw);
@@ -72,22 +75,27 @@ h1{
 }
 
 .addTaskButton:hover, .taskContainer:hover, 
-.formButtonsContainer > button:hover, .addSubtaskButton:hover, .subtractSubtaskButton:hover,
-.detailsButton:hover, .editButton:hover{
+.formButtonsContainer > button:hover,
+.detailsButton:hover, .editButton:hover, .closeButton:hover{
     cursor: pointer;
     color: var(--secondary-color);
     transform: translateY(-2px);
     box-shadow: 6px 6px 10px var(--secondary-color);
 }
 
-.formContainer{
-    display: block;
-    width: 100vw;
-    height: 00vh;
-    display: flex;
-    position: absolute;
+body{
+    overflow: auto;
+}
+
+#backgroundProtector{
+    display: none;
+    position: fixed;
     top: 0;
-    z-index: 1;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 2;
+    background-color: transparent;
 }
 
 form{
@@ -95,24 +103,30 @@ form{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 5vh 5vw;
+    margin-left: 4vw;
     gap: 2rem;
-    position: absolute;
-    z-index: 2;
+    position: relative;
+    z-index: 3;
 }
 
 .formButtonsContainer{
     display: flex;
-    gap: 2rem;
+    gap: 0rem;
     justify-content: center;
     padding-left: 10vw;
-    margin-bottom: 10vh;
+    margin-bottom: 4vh;
 }
 
 fieldset{
     width: 90vw;
-    position: relative;
-    padding-top: 100px;
+    position: fixed;
+    max-height: 100vh;
+    overflow:scroll;
+    top: 0;
+    bottom: 0;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    padding-top: 10vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -124,7 +138,7 @@ fieldset{
 legend{
     color: var(--alternate-color);
     position: absolute;
-    top: 2vh;
+    margin-top: -8vh;
     font-size: calc(20px + 2vw);
     font-weight: 600;
     text-decoration: underline;
@@ -249,29 +263,62 @@ textarea:focus{
 }
 
 .subtaskStatusLabel{
-    padding-left: 10vw;
+    padding-left: 2.5vw;
 }
 
 .subtaskInputs > input[type="text"]{
     width: 80%;
-    height: 40%
+    height: 40%;
+    font-size: calc(10px + 1vw);
 }
 
 .subtaskInputs > select{
     padding: 2vh;
     margin: 0;
+    font-size: calc(10px + 1vw);
 }
 
 .addSubtaskButtonContainer{
     display: none;
     justify-content: center;
-    margin-bottom: 2vh;
-    gap: 1rem;
+    margin-bottom: 3vh;
+    gap: 0rem;
 }
 
 .addSubtaskButton, .subtractSubtaskButton{
     padding: 1rem 2rem;
-    margin: 0vh 4vw;
+    margin: 0vh 2vw;
+    color: white;
+    border: black;
+}
+
+.addSubtaskButton{
+    background-color: green;
+    box-shadow: 6px 6px 10px var(--alternate-color-focus);
+    margin-right: 6%;
+    margin-left: 4%;
+}
+
+.addSubtaskButton:hover{
+    cursor: pointer;
+    color: green;
+    background-color: white;
+    transform: translateY(-2px);
+    box-shadow: 6px 6px 10px green;
+}
+
+.subtractSubtaskButton{
+    background-color: brown;
+    margin-left: 6%;
+    box-shadow: 6px 6px 10px var(--alternate-color-focus);
+}
+
+.subtractSubtaskButton:hover{
+    cursor: pointer;
+    color: brown;
+    background-color: white;
+    transform: translateY(-2px);
+    box-shadow: 6px 6px 10px brown;
 }
 
 .gridContainer{
@@ -325,12 +372,20 @@ textarea:focus{
 
 .detailsButton{
     font-size: 1rem;
-    padding: .5vh 1vw;
+    padding: .8vh 1.3vw;
     margin-left: 8vw;
     margin-bottom: 3vh;
 }
 
 .taskDetailsContainer{
+    top: 0;
+    left: 0%;
+    right: 10%;
+    bottom: 0;
+    position: fixed;
+    max-height: 100vh;
+    overflow: auto;
+    z-index: 3;
     display: none;
     flex-direction: column;
     align-items: center;
@@ -362,21 +417,34 @@ h2{
     text-align: center;
 }
 
+#taskSubtasks{
+    display: none;
+}
+
 .subtaskContainer{
     display: flex;
     gap: 1rem;
     align-items: center;
     justify-content: center;
-    width: 40vw;
+    text-align: center;
+    width: 40%;
     color: var(--alternate-color);
     border-radius: 20px;
     border: solid 2px var(--main-color);
-    white-space: nowrap;
-    padding: 1rem 2rem;
+    padding: 1rem 4rem;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
 }
 
 .subtaskContainer > ion-icon{
     color: var(--main-color);
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+
+.subtaskContainer > p{
+    font-size: 1rem;
+    flex-shrink: 0;
 }
 
 .editButton{
